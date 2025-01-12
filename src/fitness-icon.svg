@@ -1,0 +1,84 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Enhanced gradients -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#18181b" />
+      <stop offset="100%" style="stop-color:#27272a" />
+    </linearGradient>
+    
+    <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e5e7eb" />
+      <stop offset="30%" style="stop-color:#9ca3af" />
+      <stop offset="70%" style="stop-color:#d1d5db" />
+      <stop offset="100%" style="stop-color:#9ca3af" />
+    </linearGradient>
+    
+    <linearGradient id="plateGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626" />
+      <stop offset="100%" style="stop-color:#b91c1c" />
+    </linearGradient>
+
+    <linearGradient id="fistGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444" />
+      <stop offset="100%" style="stop-color="#dc2626" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle with enhanced texture -->
+  <circle cx="100" cy="100" r="90" fill="url(#bgGradient)" />
+  
+  <!-- Power fist -->
+  <path d="M35 40 
+           Q35 35 40 35 
+           L45 35 
+           Q50 35 50 40
+           L50 45
+           Q50 48 47 48
+           L38 48
+           Q35 48 35 45
+           Z" 
+        fill="url(#fistGradient)" 
+        transform="rotate(45, 40, 40)" />
+  
+  <!-- Background elements -->
+  <path d="M20 120 Q100 150 180 120" stroke="#ef4444" stroke-width="2" fill="none" opacity="0.2" />
+  <path d="M30 30 L170 170" stroke="#dc2626" stroke-width="1" opacity="0.1" />
+  <path d="M170 30 L30 170" stroke="#dc2626" stroke-width="1" opacity="0.1" />
+  
+  <!-- Main dumbbell - angled perspective -->
+  <!-- Left weight plates -->
+  <ellipse cx="60" cy="110" rx="28" ry="25" fill="url(#plateGradient)" transform="rotate(-15)" />
+  <ellipse cx="60" cy="110" rx="22" ry="20" fill="#b91c1c" transform="rotate(-15)" />
+  <ellipse cx="60" cy="110" rx="14" ry="12" fill="#991b1b" transform="rotate(-15)" />
+  
+  <!-- Right weight plates -->
+  <ellipse cx="140" cy="90" rx="28" ry="25" fill="url(#plateGradient)" transform="rotate(-15)" />
+  <ellipse cx="140" cy="90" rx="22" ry="20" fill="#b91c1c" transform="rotate(-15)" />
+  <ellipse cx="140" cy="90" rx="14" ry="12" fill="#991b1b" transform="rotate(-15)" />
+  
+  <!-- Angled bar with enhanced metallic effect -->
+  <path d="M60 110 L140 90" stroke="url(#metalGradient)" stroke-width="12" />
+  
+  <!-- Enhanced grips with metallic texture -->
+  <rect x="80" y="97" width="25" height="16" rx="2" transform="rotate(-15)" fill="#374151" />
+  <rect x="115" y="92" width="25" height="16" rx="2" transform="rotate(-15)" fill="#374151" />
+  
+  <!-- Metallic highlights -->
+  <path d="M60 105 L140 85" stroke="white" stroke-width="1" opacity="0.4" />
+  <path d="M60 115 L140 95" stroke="#374151" stroke-width="1" opacity="0.4" />
+  
+  <!-- Weight numbers -->
+  <text x="55" y="113" fill="white" font-size="14" text-anchor="middle" font-weight="bold" transform="rotate(-15)">100</text>
+  <text x="145" y="93" fill="white" font-size="14" text-anchor="middle" font-weight="bold" transform="rotate(-15)">100</text>
+  
+  <!-- Additional metallic shine effects -->
+  <ellipse cx="60" cy="110" rx="10" ry="8" fill="white" opacity="0.1" transform="rotate(-15)" />
+  <ellipse cx="140" cy="90" rx="10" ry="8" fill="white" opacity="0.1" transform="rotate(-15)" />
+  
+  <!-- Power accent elements -->
+  <circle cx="170" cy="160" r="8" fill="url(#plateGradient)" opacity="0.6" />
+  
+  <!-- Additional strength-themed accents -->
+  <path d="M155 70 L165 60 L175 70" stroke="#ef4444" stroke-width="2" fill="none" opacity="0.3" />
+  <path d="M25 130 L35 120 L45 130" stroke="#ef4444" stroke-width="2" fill="none" opacity="0.3" />
+</svg>

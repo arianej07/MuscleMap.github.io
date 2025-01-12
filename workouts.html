@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workouts - Muscle Map</title>
+    <link rel="icon" href="fitness-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header .logo {
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 0.5rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #app {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .workout-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .workout-card {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .workout-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .workout-card p {
+            margin-bottom: 10px;
+        }
+
+        .workout-card button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .workout-card button:hover {
+            background-color: #45a049;
+        }
+
+        .ad-banner {
+            background-color: #ddd;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="MuscleMapLogo.ico" alt="Muscle Map Logo" class="logo">
+        <h1>Muscle Map</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="workouts.html">Workouts</a></li>
+            <li><a href="progress.html">Progress</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="app">
+            <h2>Workouts</h2>
+            <div class="workout-list">
+                <div class="workout-card">
+                    <h3>Full Body Blast</h3>
+                    <p>A comprehensive workout targeting all major muscle groups.</p>
+                    <p>Duration: 45 minutes</p>
+                    <button onclick="viewWorkout('full-body')">View Workout</button>
+                </div>
+                <div class="workout-card">
+                    <h3>Upper Body Focus</h3>
+                    <p>Intensify your chest, back, and arm muscles with this routine.</p>
+                    <p>Duration: 30 minutes</p>
+                    <button onclick="viewWorkout('upper-body')">View Workout</button>
+                </div>
+                <div class="workout-card">
+                    <h3>Lower Body Strength</h3>
+                    <p>Build powerful legs and glutes with these targeted exercises.</p>
+                    <p>Duration: 40 minutes</p>
+                    <button onclick="viewWorkout('lower-body')">View Workout</button>
+                </div>
+                <div class="workout-card">
+                    <h3>Core Crusher</h3>
+                    <p>Strengthen your abs and improve overall core stability.</p>
+                    <p>Duration: 20 minutes</p>
+                    <button onclick="viewWorkout('core')">View Workout</button>
+                </div>
+            </div>
+            <div class="ad-banner">
+                <img src="ad1.png" alt="Sporty Person" style="height: 50%; max-width: 100%;">
+            </div>
+        </div>
+    </main>
+
+    <div id="workoutModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="workoutImage">
+        <div id="caption"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Muscle Map App. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function viewWorkout(workoutId) {
+            var modal = document.getElementById("workoutModal");
+            var img = document.getElementById("workoutImage");
+            var caption = document.getElementById("caption");
+
+            var workoutImages = {
+                'full-body': 'images/full-body.jpg',
+                'upper-body': 'images/upper-body.jpg',
+                'lower-body': 'images/lower-body.jpg',
+                'core': 'images/core.jpg'
+            };
+
+            img.src = workoutImages[workoutId];
+            caption.innerHTML = "Viewing workout: " + workoutId.replace('-', ' ');
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("workoutModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

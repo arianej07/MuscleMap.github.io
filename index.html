@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muscle Map</title>
+    <link rel="icon" href="fitness-icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+       body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            /* padding: 1rem; */
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header .logo {
+            height: 60px; /* Adjust as needed */
+            margin-right: 15px;
+        }
+
+        
+
+        nav {
+            background-color: #444;
+            padding: 0.5rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #app {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        #muscleMap {
+            width: 100%;
+            /* max-width: 400px; /* Adjust based on your needs */
+            aspect-ratio: 4 / 4;
+            /* Adjust based on your image aspect ratio */
+            background-color: black;
+            background-image: url("body.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .muscle {
+            position: absolute;
+            cursor: pointer;
+            transition: background-color 0.3s  ;
+            border: 2px solid transparent;
+            border-radius: 5px;
+        }
+
+        .muscle:hover {
+            background-color: rgba(255, 255, 0, 0.3);
+            border-color: yellow;
+        }
+
+        /* Responsive muscle positions */
+        #chest {
+            top: 24%;
+            left: 14%;
+            width: 16%;
+            height: 9%;
+        }
+
+        #biceps {
+            top: 25%;
+            left: 30%;
+            width: 8%;
+            height: 12%;
+        }
+
+        #biceps2 {
+            top: 25%;
+            left: 6%;
+            width: 8%;
+            height: 12%;
+        }
+
+        #shoulders {
+            top: 21%;
+            left: 10%;
+            width: 25%;
+            height: 4%;
+        }
+
+        #abs {
+            top: 33%;
+            left: 15%;
+            width: 15%;
+            height: 10%;
+        }
+
+        #quadriceps {
+            top: 50%;
+            left: 10%;
+            width: 25%;
+            height: 15%;
+        }
+
+        #triceps {
+            top: 22%;
+            left: 60%;
+            width: 10%;
+            height: 15%;
+        }
+
+        #calves {
+            top: 65%;
+            left: 65%;
+            width: 30%;
+            height: 15%;
+        }
+        #calves2 {
+            top: 65%;
+            left: 45%;
+            width: 15%;
+            height: 20%;
+        }
+
+        #latissimus-dorsi {
+            top: 30%;
+            left: 67.75%;
+            width: 20%;
+            height: 15%;
+        }
+
+        #hamstrings {
+            top: 55%;
+            left: 68%;
+            width: 20%;
+            height: 15%;
+        }
+
+        #rear-deltoids {
+            top: 20%;
+            left: 80%;
+            width: 10%;
+            height: 10%;
+        }
+
+        #rear-deltoids2 {
+            top: 20%;
+            left: 65%;
+            width: 10%;
+            height: 10%;
+        }
+
+        #forearms {
+            top: 30%;
+            left: 45%;
+            width: 10%;
+            height: 15%;
+        }
+
+        #trapizius {
+            top: 20%;
+            left: 70%;
+            width: 15%;
+            height: 10%;
+        }
+
+    
+
+        
+
+        /* Media query for smaller screens 
+        @media (max-width: 600px) {
+          /*   #muscleMap {
+               max-width: 300px; 
+                /* Adjust for smaller screens 
+            }  
+         }*/
+
+        #exerciseInfo {
+            margin-top: 20px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            display: none;
+        }
+
+        
+
+        #exerciseInfo h2,
+        #exerciseInfo h3 {
+            color: #fff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="MuscleMapLogo.ico" alt="Muscle Map Logo" class="logo">
+        <h1>Muscle Map</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="workouts.html">Workouts</a></li>
+            <li><a href="progress.html">Progress</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="app">
+            <div id="muscleMap">
+                <div id="chest" class="muscle" data-muscle="Chest"></div>
+                <div id="biceps" class="muscle" data-muscle="Biceps"></div>
+                <div id="triceps" class="muscle" data-muscle="Triceps"></div>
+                <div id="quadriceps" class="muscle" data-muscle="Quadriceps"></div>
+                <div id="shoulders" class="muscle" data-muscle="Shoulders"></div>
+                <div id="abs" class="muscle" data-muscle="Abs"></div>
+                <div id="calves" class="muscle" data-muscle="Calves"></div>
+                <div id="latissimus-dorsi" class="muscle" data-muscle="LatissimusDorsi"></div>
+                <div id="hamstrings" class="muscle" data-muscle="Hamstrings"></div>
+                <div id="rear-deltoids" class="muscle" data-muscle="RearDeltoids"></div>
+                <div id="forearms" class="muscle" data-muscle="Forearms"></div>
+                <div id="calves2" class="muscle" data-muscle="Calves"></div>
+                <div id="trapizius" class="muscle" data-muscle="Trapizius"></div>
+                <div id="rear-deltoids2" class="muscle" data-muscle="RearDeltoids"></div>
+                <div id="biceps2" class="muscle" data-muscle="Biceps"></div>
+            </div>
+            <div id="exerciseInfo" style="display: none;">
+                <h2 id="muscleName">Select a muscle</h2>
+                <p id="muscleDescription"></p>
+                <ul id="exerciseList"></ul>
+                <video id="muscleVideo" controls style="max-width: 60%; height: 50%;">
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Muscle Map. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const muscles = document.querySelectorAll('.muscle');
+        const exerciseInfo = document.getElementById('exerciseInfo');
+
+        const muscleData = {
+            Biceps: {
+                description: "The biceps brachii is a two-headed muscle located on the upper arm between the shoulder and elbow.",
+                image: "images/biceps.jpg",
+                video: "videos/curls.mp4",
+                exercises: [
+                    { name: "Hammer Curl", sets: "3", reps: "10-15" },
+                    { name: "Concentration Curl", sets: "3", reps: "12-15" }
+                ]
+            },
+            Chest: {
+                description: "The chest muscles, primarily the pectoralis major, are responsible for movements of the shoulder joint.",
+                image: "images/chest.jpg",
+                video: "videos/chest-press.mp4",
+                exercises: [
+                    { name: "Bench Press", sets: "4", reps: "8-10" },
+                    { name: "Incline Dumbbell Press", sets: "3", reps: "10-12" },
+                    { name: "Push-Ups", sets: "3", reps: "Max Reps" }
+                ]
+            },
+            Triceps: {
+                description: "The triceps brachii is a three-headed muscle on the back of the upper arm, responsible for extending the elbow.",
+                image: "images/triceps.jpg",
+                video: "videos/tricep-pushdown.mp4",
+                exercises: [
+                    { name: "Tricep Pushdowns", sets: "3", reps: "10-12" },
+                    { name: "Skull Crushers", sets: "3", reps: "8-10" },
+                    { name: "Dips", sets: "3", reps: "8-12" }
+                ]
+            },
+            Quadriceps: {
+                description: "The quadriceps femoris is a group of four muscles located in the front of the thigh.",
+                image: "images/quadriceps.jpg",
+                video: "videos/leg-press.mp4",
+                exercises: [
+                    { name: "Squats", sets: "4", reps: "8-12" },
+                    { name: "Leg Press", sets: "3", reps: "10-15" },
+                    { name: "Lunges", sets: "3", reps: "10-12 per leg" }
+                ]
+            },
+            Shoulders: {
+                description: "The shoulder muscles, including the deltoids, are responsible for arm movements and shoulder stability.",
+                image: "images/shoulders.jpg",
+                video: "videos/shoulders.mp4",
+                exercises: [
+                    { name: "Overhead Press", sets: "4", reps: "8-10" },
+                    { name: "Lateral Raises", sets: "3", reps: "12-15" },
+                    { name: "Front Raises", sets: "3", reps: "12-15" }
+                ]
+            },
+            Abs: {
+                description: "The abdominal muscles support the core and are crucial for stability and various body movements.",
+                image: "images/abs.jpg",
+                video: "videos/abs.mp4",
+                exercises: [
+                    { name: "Crunches", sets: "3", reps: "15-20" },
+                    { name: "Planks", sets: "3", reps: "30-60 seconds" },
+                    { name: "Leg Raises", sets: "3", reps: "12-15" }
+                ]
+            },
+            Calves: {
+                description: "The calf muscles, primarily the gastrocnemius and soleus, are responsible for plantar flexion of the foot.",
+                image: "images/calves.jpg",
+                video: "videos/calves.mp4",
+                exercises: [
+                    { name: "Standing Calf Raises", sets: "4", reps: "15-20" },
+                    { name: "Seated Calf Raises", sets: "3", reps: "12-15" }
+                ]
+            },
+            LatissimusDorsi: {
+                description: "The latissimus dorsi, or lats, are the large muscles of the back responsible for arm movements and shoulder stability.",
+                video: "videos/lat-pulldown.mp4",
+                exercises: [
+                    { name: "Pull-Ups", sets: "3", reps: "Max Reps" },
+                    { name: "Lat Pulldowns", sets: "3", reps: "10-12" },
+                    { name: "Bent-Over Rows", sets: "4", reps: "8-10" }
+                ]
+            },
+            Hamstrings: {
+                description: "The hamstring muscles are located on the back of the thigh and are responsible for knee flexion and hip extension.",
+                exercises: [
+                    { name: "Romanian Deadlifts", sets: "4", reps: "8-10" },
+                    { name: "Leg Curls", sets: "3", reps: "10-12" },
+                    { name: "Good Mornings", sets: "3", reps: "12-15" }
+                    ]
+                },
+                RearDeltoids: {
+                    description: "The rear deltoids are the posterior part of the shoulder muscles responsible for shoulder extension and transverse abduction.",
+                    exercises: [
+                        { name: "Face Pulls", sets: "3", reps: "12-15" },
+                        { name: "Reverse Flyes", sets: "3", reps: "12-15" },
+                        
+                    ]
+                },
+            Forearms: {
+                description: "The forearm muscles are responsible for wrist and finger movements, as well as grip strength.",
+                exercises: [
+                    { name: "Wrist Curls", sets: "3", reps: "12-15" },
+                    { name: "Reverse Wrist Curls", sets: "3", reps: "12-15" },
+                    { name: "Farmer's Walk", sets: "3", reps: "30-60 seconds" }
+                ]
+            },
+            Trapizius: {
+                description: "The trapezius muscles are located on the upper back and neck, responsible for shoulder and neck movements.",
+                exercises: [
+                    { name: "Shrugs", sets: "3", reps: "12-15" },
+                    { name: "Upright Rows", sets: "3", reps: "12-15" },
+                    { name: "Face Pulls", sets: "3", reps: "12-15" }
+                ]           // document.getElementById("muscleImage").src = muscle.image;
+
+            }
+        };
+
+        function showMuscleInfo(muscleId) {
+            const muscle = muscleData[muscleId];
+            document.getElementById("muscleName").innerText = muscleId;
+            document.getElementById("muscleDescription").innerText = muscle.description;
+            document.getElementById("muscleVideo").src = muscle.video;
+
+            const exerciseList = document.getElementById("exerciseList");
+            exerciseList.innerHTML = "";
+            muscle.exercises.forEach(exercise => {
+                const li = document.createElement("li");
+                li.innerText = `${exercise.name}: ${exercise.sets} sets of ${exercise.reps} reps`;
+                exerciseList.appendChild(li);
+            });
+
+            // Show the exercise info section
+            exerciseInfo.style.display = "block";
+        }
+
+        muscles.forEach(muscle => {
+            muscle.addEventListener('click', () => {
+                const muscleName = muscle.getAttribute('data-muscle');
+                console.log(`Muscle clicked: ${muscleName}`);
+                showMuscleInfo(muscleName);
+            });
+        });
+    </script>
+</body>
+
+</html>
